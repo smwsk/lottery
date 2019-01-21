@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="screen-orientation" content="portrait">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <title>年会抽奖小程序</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/wall.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body id="app">
+<div id="main" class="wall"></div>
+<div id="result" class="result"></div>
+<div id="reward" class="reward-tools">
+    <div class="list-group">
+        <div class="list-group-item list-group-item-action active">
+            奖品列表
+        </div>
+        <div class="list-group-item reword-item">
+			<div class="reword-item-text">
+                <label>一等奖 </label>
+                <label>华为 HUAWEI Mate 20 X </label>
+                <label>数量 ： 1</label>
+			</div>
+			<div>
+                <img src="img/one.png" width="100px;" />
+			</div>
+		</div>
+
+        <div class="list-group-item reword-item">
+            <div class="reword-item-text">
+                <label>二等奖 </label>
+                <label>米家（MIJIA）扫地机器人</label>
+                <label>数量 ： 2</label>
+            </div>
+            <div>
+                <img src="img/two.png" width="100px;" />
+            </div>
+        </div>
+
+        <div class="list-group-item reword-item">
+            <div class="reword-item-text">
+                <label>三等奖 </label>
+                <label>小米（MI）米家空气净化器2S</label>
+                <label>数量 ： 3</label>
+            </div>
+            <div>
+                <img src="img/three.png" width="100px;" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="reward-person" class="reward-person">
+    <div class="list-group">
+        <div v-on="click: downloadFile" class="list-group-item list-group-item-action active">
+            中奖名单
+        </div>
+
+        <li class="reward-scrollable reward-person-list">
+            <div v-repeat="rewards">
+                <div class="list-group-item list-group">
+                    <div  class="list-group-item list-group-item-action active">
+                        {{name}}
+                    </div>
+                    <label href="#" class="list-group-item list-group-item-action" v-repeat="person">{{$value}}</label>
+                </div>
+            </div>
+
+        </li>
+    </div>
+</div>
+
+<div id="tools" class="tools">
+
+    <button :id="$index"
+        v-on="click: onClick($index)" class="pure-button" v-class="button-error: selected == $index" v-repeat="btns">{{name}}</button>
+    <button
+        class="pure-button"
+        v-on="click: toggle"
+        v-class="
+                button-secondary: !running,
+                button-success: running
+            ">{{running?'停!':'开始'}}</button>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/tagcanvas.js"></script>
+<script type="text/javascript" src="js/member.js"></script>
+<script type="text/javascript" src="js/FileSaver.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
